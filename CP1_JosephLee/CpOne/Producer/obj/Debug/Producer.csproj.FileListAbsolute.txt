@@ -1,0 +1,9 @@
+\\mac\home\documents\visual studio 2015\Projects\CpOne\Producer\bin\Debug\Producer.exe.config
+\\mac\home\documents\visual studio 2015\Projects\CpOne\Producer\bin\Debug\Producer.exe
+\\mac\home\documents\visual studio 2015\Projects\CpOne\Producer\bin\Debug\Producer.pdb
+\\mac\home\documents\visual studio 2015\Projects\CpOne\Producer\bin\Debug\Microsoft.ServiceBus.dll
+\\mac\home\documents\visual studio 2015\Projects\CpOne\Producer\bin\Debug\Microsoft.WindowsAzure.Configuration.dll
+\\mac\home\documents\visual studio 2015\Projects\CpOne\Producer\bin\Debug\Microsoft.ServiceBus.xml
+\\mac\home\documents\visual studio 2015\Projects\CpOne\Producer\obj\Debug\Producer.exe
+\\mac\home\documents\visual studio 2015\Projects\CpOne\Producer\obj\Debug\Producer.pdb
+\\mac\home\documents\visual studio 2015\Projects\CpOne\Producer\obj\Debug\Producer.csprojResolveAssemblyReference.cache
