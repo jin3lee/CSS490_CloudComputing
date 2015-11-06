@@ -1,6 +1,10 @@
-﻿using Microsoft.ServiceBus.Messaging;
-using System;
+﻿using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.ServiceBus.Messaging;
 using Microsoft.Azure;
+using System;
 
 namespace Consumer
 {
@@ -46,6 +50,18 @@ namespace Consumer
 
 
             Console.ReadKey();
+        }
+
+        // 
+        public static void retrieveConnectionString()
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            
+            // do nothing if the cloud storage account was not found
+            if (storageAccount == null) { return; }
+
+
         }
     }
 }
