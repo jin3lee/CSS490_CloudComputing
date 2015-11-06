@@ -1,7 +1,7 @@
-﻿using Microsoft.ServiceBus;
-using Microsoft.ServiceBus.Messaging;
-using Microsoft.WindowsAzure;
+﻿using Microsoft.ServiceBus.Messaging;
+using Microsoft.ServiceBus;
 using System;
+using Microsoft.Azure;
 
 namespace Producer
 {
@@ -64,7 +64,7 @@ namespace Producer
             QueueClient Client =
                 QueueClient.CreateFromConnectionString(connectionString, QUEUE_NAME);
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; ; i++)
             {
                 // Create message, passing a string message for the body.
                 BrokeredMessage message = new BrokeredMessage("prod#" + mProducerId + " msg#" + i);

@@ -1,6 +1,6 @@
 ﻿using Microsoft.ServiceBus.Messaging;
-using Microsoft.WindowsAzure;
 using System;
+using Microsoft.Azure;
 
 namespace Consumer
 {
