@@ -1,0 +1,778 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Management.KeyVault</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.Azure.Management.KeyVault.AccessPolicyEntry.#ctor">
+            <summary>
+            Initializes a new instance of the AccessPolicyEntry class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.AccessPolicyEntry.ObjectId">
+            <summary>
+            Object ID of the principal
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.AccessPolicyEntry.PermissionsRawJsonString">
+            <summary>
+            Permissions that the principal has for this vault, in the serialized JSON string format
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.AccessPolicyEntry.TenantId">
+            <summary>
+            Tenant ID of the principal
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.AccessPolicyEntry.ApplicationId">
+            <summary>
+            Application ID of the client making request on behalf of a principal
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.AccessPolicyEntry.PermissionsToKeys">
+            <summary>
+            Permissions to keys
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.AccessPolicyEntry.PermissionsToSecrets">
+            <summary>
+            Permissions to secrets
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.IKeyVaultManagementClient">
+            <summary>
+            The Windows Azure management API provides a RESTful set of web services
+            that interact with Azure Key Vault.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.IKeyVaultManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.IKeyVaultManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.IKeyVaultManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.IKeyVaultManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.IKeyVaultManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.IKeyVaultManagementClient.Vaults">
+            <summary>
+            Vault operations
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.IVaultOperations">
+            <summary>
+            Vault operations
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.IVaultOperations.CreateOrUpdateAsync(System.String,System.String,Microsoft.Azure.Management.KeyVault.VaultCreateOrUpdateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new Azure key vault.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the server belongs.
+            </param>
+            <param name='vaultName'>
+            Name of the vault
+            </param>
+            <param name='parameters'>
+            Parameters to create or update the vault
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.IVaultOperations.DeleteAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the specified Azure key vault.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the vault belongs.
+            </param>
+            <param name='vaultName'>
+            The name of the vault to delete
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.IVaultOperations.GetAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the specified Azure key vault.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the vault belongs.
+            </param>
+            <param name='vaultName'>
+            The name of the vault.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.IVaultOperations.ListAsync(System.String,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            The List operation gets information about the vaults associated
+            either with the subscription if no resource group is specified or
+            within the specified resource group.
+            </summary>
+            <param name='resourceGroupName'>
+            An optional argument which specifies the name of the resource group
+            that constrains the set of vaults that are returned.
+            </param>
+            <param name='top'>
+            Maximum number of results to return.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            List of vaults
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.IVaultOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the next set of vaults based on the previously returned
+            NextLink value.
+            </summary>
+            <param name='nextLink'>
+            NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            List of vaults
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient">
+            <summary>
+            The Windows Azure management API provides a RESTful set of web services
+            that interact with Azure Key Vault.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.#ctor">
+            <summary>
+            Initializes a new instance of the KeyVaultManagementClient class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Uri)">
+            <summary>
+            Initializes a new instance of the KeyVaultManagementClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials)">
+            <summary>
+            Initializes a new instance of the KeyVaultManagementClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the KeyVaultManagementClient class.
+            </summary>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Uri,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the KeyVaultManagementClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the KeyVaultManagementClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.Clone(Hyak.Common.ServiceClient{Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient})">
+            <summary>
+            Clones properties from current instance to another
+            KeyVaultManagementClient instance
+            </summary>
+            <param name='client'>
+            Instance of KeyVaultManagementClient to clone to
+            </param>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.Vaults">
+            <summary>
+            Vault operations
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.KeyVaultManagementClientExtensions">
+            <summary>
+            The Windows Azure management API provides a RESTful set of web services
+            that interact with Azure Key Vault.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.ResourceBase.#ctor">
+            <summary>
+            Initializes a new instance of the ResourceBase class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.ResourceBase.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ResourceBase class with required
+            arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.ResourceBase.Id">
+            <summary>
+            Optional. Gets the ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.ResourceBase.Location">
+            <summary>
+            Required. Gets or sets the location of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.ResourceBase.Name">
+            <summary>
+            Optional. The name of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.ResourceBase.Tags">
+            <summary>
+            Optional. Gets or sets the tags attached to the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.ResourceBase.Type">
+            <summary>
+            Optional. The type of the resource
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.Sku.#ctor">
+            <summary>
+            Initializes a new instance of the Sku class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.Sku.Family">
+            <summary>
+            Optional. SKU family name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.Sku.Name">
+            <summary>
+            Optional. SKU name
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.Vault">
+            <summary>
+            Resource information with extended details.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.Vault.#ctor">
+            <summary>
+            Initializes a new instance of the Vault class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.Vault.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Vault class with required
+            arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.Vault.Properties">
+            <summary>
+            Optional. Properties of the vault
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.VaultCreateOrUpdateParameters">
+            <summary>
+            Parameters to create or update a vault
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultCreateOrUpdateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the VaultCreateOrUpdateParameters
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultCreateOrUpdateParameters.#ctor(Microsoft.Azure.Management.KeyVault.VaultProperties,System.String)">
+            <summary>
+            Initializes a new instance of the VaultCreateOrUpdateParameters
+            class with required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultCreateOrUpdateParameters.Properties">
+            <summary>
+            Required. Gets or sets the properties of the vault.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.VaultGetResponse">
+            <summary>
+            Vault information.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultGetResponse.#ctor">
+            <summary>
+            Initializes a new instance of the VaultGetResponse class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultGetResponse.Vault">
+            <summary>
+            Optional. Gets or sets the vault.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.VaultListResponse">
+            <summary>
+            List of vaults
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultListResponse.#ctor">
+            <summary>
+            Initializes a new instance of the VaultListResponse class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultListResponse.NextLink">
+            <summary>
+            Optional. Gets or sets the URL to get the next set of vaults.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultListResponse.Vaults">
+            <summary>
+            Optional. Gets or sets the list of vaults.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.VaultOperations">
+            <summary>
+            Vault operations
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperations.#ctor(Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient)">
+            <summary>
+            Initializes a new instance of the VaultOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperations.CreateOrUpdateAsync(System.String,System.String,Microsoft.Azure.Management.KeyVault.VaultCreateOrUpdateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new Azure key vault.
+            </summary>
+            <param name='resourceGroupName'>
+            Required. The name of the Resource Group to which the server
+            belongs.
+            </param>
+            <param name='vaultName'>
+            Required. Name of the vault
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create or update the vault
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperations.DeleteAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the specified Azure key vault.
+            </summary>
+            <param name='resourceGroupName'>
+            Required. The name of the Resource Group to which the vault belongs.
+            </param>
+            <param name='vaultName'>
+            Required. The name of the vault to delete
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperations.GetAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the specified Azure key vault.
+            </summary>
+            <param name='resourceGroupName'>
+            Required. The name of the Resource Group to which the vault belongs.
+            </param>
+            <param name='vaultName'>
+            Required. The name of the vault.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperations.ListAsync(System.String,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            The List operation gets information about the vaults associated
+            either with the subscription if no resource group is specified or
+            within the specified resource group.
+            </summary>
+            <param name='resourceGroupName'>
+            Optional. An optional argument which specifies the name of the
+            resource group that constrains the set of vaults that are returned.
+            </param>
+            <param name='top'>
+            Required. Maximum number of results to return.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            List of vaults
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the next set of vaults based on the previously returned
+            NextLink value.
+            </summary>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            List of vaults
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions">
+            <summary>
+            The Windows Azure management API provides a RESTful set of web services
+            that interact with Azure Key Vault.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions.CreateOrUpdate(Microsoft.Azure.Management.KeyVault.IVaultOperations,System.String,System.String,Microsoft.Azure.Management.KeyVault.VaultCreateOrUpdateParameters)">
+            <summary>
+            Creates a new Azure key vault.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.KeyVault.IVaultOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. The name of the Resource Group to which the server
+            belongs.
+            </param>
+            <param name='vaultName'>
+            Required. Name of the vault
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create or update the vault
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions.CreateOrUpdateAsync(Microsoft.Azure.Management.KeyVault.IVaultOperations,System.String,System.String,Microsoft.Azure.Management.KeyVault.VaultCreateOrUpdateParameters)">
+            <summary>
+            Creates a new Azure key vault.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.KeyVault.IVaultOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. The name of the Resource Group to which the server
+            belongs.
+            </param>
+            <param name='vaultName'>
+            Required. Name of the vault
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create or update the vault
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions.Delete(Microsoft.Azure.Management.KeyVault.IVaultOperations,System.String,System.String)">
+            <summary>
+            Deletes the specified Azure key vault.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.KeyVault.IVaultOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. The name of the Resource Group to which the vault belongs.
+            </param>
+            <param name='vaultName'>
+            Required. The name of the vault to delete
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions.DeleteAsync(Microsoft.Azure.Management.KeyVault.IVaultOperations,System.String,System.String)">
+            <summary>
+            Deletes the specified Azure key vault.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.KeyVault.IVaultOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. The name of the Resource Group to which the vault belongs.
+            </param>
+            <param name='vaultName'>
+            Required. The name of the vault to delete
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions.Get(Microsoft.Azure.Management.KeyVault.IVaultOperations,System.String,System.String)">
+            <summary>
+            Gets the specified Azure key vault.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.KeyVault.IVaultOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. The name of the Resource Group to which the vault belongs.
+            </param>
+            <param name='vaultName'>
+            Required. The name of the vault.
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions.GetAsync(Microsoft.Azure.Management.KeyVault.IVaultOperations,System.String,System.String)">
+            <summary>
+            Gets the specified Azure key vault.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.KeyVault.IVaultOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. The name of the Resource Group to which the vault belongs.
+            </param>
+            <param name='vaultName'>
+            Required. The name of the vault.
+            </param>
+            <returns>
+            Vault information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions.List(Microsoft.Azure.Management.KeyVault.IVaultOperations,System.String,System.Int32)">
+            <summary>
+            The List operation gets information about the vaults associated
+            either with the subscription if no resource group is specified or
+            within the specified resource group.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.KeyVault.IVaultOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Optional. An optional argument which specifies the name of the
+            resource group that constrains the set of vaults that are returned.
+            </param>
+            <param name='top'>
+            Required. Maximum number of results to return.
+            </param>
+            <returns>
+            List of vaults
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions.ListAsync(Microsoft.Azure.Management.KeyVault.IVaultOperations,System.String,System.Int32)">
+            <summary>
+            The List operation gets information about the vaults associated
+            either with the subscription if no resource group is specified or
+            within the specified resource group.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.KeyVault.IVaultOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Optional. An optional argument which specifies the name of the
+            resource group that constrains the set of vaults that are returned.
+            </param>
+            <param name='top'>
+            Required. Maximum number of results to return.
+            </param>
+            <returns>
+            List of vaults
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions.ListNext(Microsoft.Azure.Management.KeyVault.IVaultOperations,System.String)">
+            <summary>
+            Get the next set of vaults based on the previously returned
+            NextLink value.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.KeyVault.IVaultOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            List of vaults
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultOperationsExtensions.ListNextAsync(Microsoft.Azure.Management.KeyVault.IVaultOperations,System.String)">
+            <summary>
+            Get the next set of vaults based on the previously returned
+            NextLink value.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.KeyVault.IVaultOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            List of vaults
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.KeyVault.VaultProperties">
+            <summary>
+            Properties of the vault
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.KeyVault.VaultProperties.#ctor">
+            <summary>
+            Initializes a new instance of the VaultProperties class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultProperties.AccessPolicies">
+            <summary>
+            Optional. Access policies for one or more principals
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultProperties.EnabledForDeployment">
+            <summary>
+            Optional. Enabled or disabled for deployment
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultProperties.EnabledForDiskEncryption">
+            <summary>
+            Optional. Enabled or disabled for disk encryption
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultProperties.EnabledForTemplateDeployment">
+            <summary>
+            Optional. Enabled or disabled for Azure Resource Manager template
+            deployment
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultProperties.Sku">
+            <summary>
+            Optional. SKU details
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultProperties.TenantId">
+            <summary>
+            Optional. Tenant ID
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.KeyVault.VaultProperties.VaultUri">
+            <summary>
+            Optional. URL of the vault
+            </summary>
+        </member>
+    </members>
+</doc>
