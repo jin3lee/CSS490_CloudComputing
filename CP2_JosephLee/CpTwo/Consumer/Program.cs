@@ -17,6 +17,21 @@ namespace Consumer
         // consumes messages from the cloud's queue and prints it to console every 3 seconds
         static void Main(string[] args)
         {
+            string consumerNumber = "0";
+            if (args.Length != 0) { consumerNumber = args[0]; }
+            string s_startTime = DateTime.Now.ToString("h:mm:ss tt");
+            string s_intro = "\nTestVM" + consumerNumber + "Blob.log:\n"
+                            + "*****************************************************\n"
+                            + "\"*TestVM "+ consumerNumber + "\" started at "+ s_startTime +" *\"\n"
+                            + "*****************************************************\n";
+            
+            // write intro into blob
+            retrieveConnectionString(s_intro);
+
+            string s_body = "TestVM" + consumerNumber + " Received: ";
+            string s_append = "";
+
+            // Connect to queue
             string connectionString =
                 CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
             QueueClient Client =
@@ -32,22 +47,23 @@ namespace Consumer
             {
                 try
                 {
+                    // store message to object
                     string bodyMessage = "" + message.GetBody<string>();
 
-                    // Process message from queue
-                    Console.WriteLine();
-                    Console.WriteLine("Body: " + bodyMessage);
-                    Console.WriteLine("MessageID: " + message.MessageId);
-                    Console.WriteLine("Test Property: " +
-                    message.Properties["TestProperty"]);
+                    // collect time of message recieved
+                    string s_recieveTime = DateTime.Now.ToString("h:mm:ss tt");
 
                     // write to blob
-                    Console.WriteLine("BEFORE retrieveConnectionString() " + bodyMessage);
-                    retrieveConnectionString("BODY: " + bodyMessage);
-                    Console.WriteLine("AFTER retrieveConnectionString()");
+                    s_append = s_body + bodyMessage + " at " + s_recieveTime + "\n";
 
                     // Remove message from queue.
                     message.Complete();
+
+                    // append to blob
+                    retrieveConnectionString(s_append);
+
+                    // Wait 1 Second before continuing this loop
+                    System.Threading.Thread.Sleep(2000);
                 }
                 catch (Exception)
                 {
@@ -56,42 +72,30 @@ namespace Consumer
                 }
             }, options);
 
-
             Console.ReadKey();
         }
         
-        public static void retrieveConnectionString(String text)
+        public static void retrieveConnectionString(string text)
         {
-            Console.WriteLine("CHECK 1");
+            string cleanString = text;
             //Parse the connection string for the storage account.
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
                 Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
-            Console.WriteLine("CHECK 2");
             //Create service client for credentialed access to the Blob service.
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            Console.WriteLine("CHECK 3");
             //Get a reference to a container.
-            CloudBlobContainer container = blobClient.GetContainerReference("my-append-blobs");
-            Console.WriteLine("CHECK 4");
+            CloudBlobContainer container = blobClient.GetContainerReference("jin3leecontainer");
             //Create the container if it does not already exist. 
             container.CreateIfNotExists();
-            Console.WriteLine("CHECK 5");
             //Get a reference to an append blob.
             CloudAppendBlob appendBlob = container.GetAppendBlobReference("append-blob.log");
-            Console.WriteLine("CHECK 6");
             //Create the append blob. Note that if the blob already exists, the CreateOrReplace() method will overwrite it.
             //You can check whether the blob exists to avoid overwriting it by using CloudAppendBlob.Exists().
-            if (appendBlob == null)
+            if (!appendBlob.Exists())
             {
-                System.Console.WriteLine("appendblob == null");
+                appendBlob.CreateOrReplace();
             }
-            else
-            {
-                System.Console.WriteLine("appendblob != null");
-            }
-
-            appendBlob.CreateOrReplace();
-
+     
             int numBlocks = 10;
 
             //Generate an array of random bytes.
@@ -100,13 +104,11 @@ namespace Consumer
             rnd.NextBytes(bytes);
 
             //Simulate a logging operation by writing text data and byte data to the end of the append blob.
-            for (int i = 0; i < numBlocks; i++)
-            {
-                appendBlob.AppendText(text + " " + i + "/n");
-            }
+            appendBlob.AppendText(text);
 
             //Read the append blob to the console window.
-            Console.WriteLine(appendBlob.DownloadText());
+            Console.WriteLine("\n\n" + appendBlob.DownloadText()+"\n\n");
         }
+        
     }
 }
